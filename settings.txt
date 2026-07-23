@@ -1,4 +1,0 @@
-root: C:\Users\user\OneDrive\Desktop\sms-fraud-detector 
-path: C:\Program Files\nodejs 
-arch: 64 
-proxy: none
