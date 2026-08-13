@@ -42,3 +42,18 @@ streamlit run app.py
 ```
 
 ## Project Structure
+
+sms-fraud-detector/
+├── data/
+│ ├── spam.csv
+│ ├── cleaned_sms.csv
+│ └── reported_messages.csv
+├── notebooks/
+│ ├── exploration.ipynb
+│ └── model_training.ipynb
+├── src/
+│ ├── model.pkl
+│ └── vectorizer.pkl
+├── app.py
+├── requirements.txt
+└── README.md

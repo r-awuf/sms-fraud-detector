@@ -120,6 +120,15 @@ if st.button("🔍 Analyse Message", type="primary", use_container_width=True):
         # Community report button
         st.divider()
         st.markdown("**Was this result wrong? Help improve the model:**")
-        if st.button("🚩 Report this message as fraud"):
-            log_report(sms_input, prediction)
-            st.success("Thank you! This message has been logged for review.")
+        
+        # Store result in session state so it persists across button clicks
+        st.session_state['last_message']    = sms_input
+        st.session_state['last_prediction'] = prediction
+
+if st.session_state.get('last_message'):
+    if st.button("🚩 Report this message as fraud"):
+        log_report(
+            st.session_state['last_message'],
+            st.session_state['last_prediction']
+        )
+        st.success("Thank you! This message has been logged for review.")
