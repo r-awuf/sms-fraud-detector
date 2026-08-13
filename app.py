@@ -90,7 +90,8 @@ sms_input = st.text_area(
 
 # Analyse button
 if st.button("🔍 Analyse Message", type="primary", use_container_width=True):
-    if not sms_input.strip():
+    # sms_input can be None; guard before calling strip()
+    if not (sms_input and sms_input.strip()):
         st.warning("Please enter a message to analyse.")
     else:
         prediction, confidence, keywords = predict(sms_input)
