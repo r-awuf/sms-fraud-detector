@@ -110,6 +110,14 @@ st.markdown(f"""
     .result-card {{ background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem 1.35rem; margin: 1.25rem 0; }}
     .result-kicker {{ color: var(--muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; }}
     .result-title {{ color: var(--text); font-size: 1.35rem; font-weight: 750; margin-top: 0.25rem; }}
+    .welcome-shell {{ padding: 4rem 0 2rem; }}
+    .welcome-mark {{ align-items: center; background: var(--accent-dark); border: 1px solid var(--border); border-radius: 18px; display: flex; font-size: 2.7rem; height: 76px; justify-content: center; margin-bottom: 1.4rem; width: 76px; }}
+    .welcome-title {{ color: var(--text); font-size: clamp(2.4rem, 7vw, 4.5rem); font-weight: 800; letter-spacing: -0.05em; line-height: 0.98; margin: 0; max-width: 680px; }}
+    .welcome-copy {{ color: var(--muted) !important; font-size: 1.12rem; line-height: 1.6; margin: 1.2rem 0 1.8rem; max-width: 590px; }}
+    .welcome-point {{ background: var(--surface); border: 1px solid var(--border); border-radius: 12px; min-height: 126px; padding: 1rem; }}
+    .welcome-point strong {{ color: var(--text); display: block; margin-bottom: 0.35rem; }}
+    .welcome-point span {{ color: var(--muted); display: block; font-size: 0.9rem; line-height: 1.45; }}
+    @media (max-width: 640px) {{ .welcome-shell {{ padding-top: 2rem; }} .welcome-point {{ min-height: auto; margin-bottom: 0.65rem; }} }}
     .footer-note {{ color: var(--muted); font-size: 0.82rem; text-align: center; margin-top: 2.5rem; }}
 </style>
 """, unsafe_allow_html=True)
@@ -121,6 +129,31 @@ with st.sidebar:
     st.divider()
     st.markdown("**How it works**")
     st.caption("The model looks for patterns in the message and highlights common MoMo fraud signals.")
+
+if 'show_welcome' not in st.session_state:
+    st.session_state['show_welcome'] = True
+
+if st.session_state['show_welcome']:
+    st.markdown('<div class="welcome-shell">', unsafe_allow_html=True)
+    st.markdown('<div class="welcome-mark">🛡️</div>', unsafe_allow_html=True)
+    st.markdown('<div class="eyebrow">A safer second opinion</div>', unsafe_allow_html=True)
+    st.markdown('<h1 class="welcome-title">Pause before you trust that message.</h1>', unsafe_allow_html=True)
+    st.markdown('<p class="welcome-copy">SMS Fraud Detector helps you spot suspicious mobile money requests, prize claims, and urgent messages before they cost you money.</p>', unsafe_allow_html=True)
+    if st.button("Start checking messages  →", type="primary", use_container_width=True):
+        st.session_state['show_welcome'] = False
+        st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="example-label">What you can check</div>', unsafe_allow_html=True)
+    point_col1, point_col2, point_col3 = st.columns(3)
+    with point_col1:
+        st.markdown('<div class="welcome-point"><strong>🧠 Message patterns</strong><span>Get a model-based risk score in seconds.</span></div>', unsafe_allow_html=True)
+    with point_col2:
+        st.markdown('<div class="welcome-point"><strong>🔎 Clear signals</strong><span>See common fraud words found in the SMS.</span></div>', unsafe_allow_html=True)
+    with point_col3:
+        st.markdown('<div class="welcome-point"><strong>🇬🇭 Ghana-focused</strong><span>Built around local MoMo scam patterns.</span></div>', unsafe_allow_html=True)
+    st.markdown('<div class="footer-note">Never share your PIN or one-time password by SMS or phone.</div>', unsafe_allow_html=True)
+    st.stop()
 
 st.markdown('<div class="eyebrow">Ghanaian SMS safety</div>', unsafe_allow_html=True)
 st.title("🛡️ SMS Fraud Detector")
