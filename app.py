@@ -95,6 +95,7 @@ st.markdown(f"""
     }}
     .stApp {{ background: var(--page); color: var(--text); }}
     [data-testid="stHeader"] {{ background: transparent; }}
+    .brand-mark {{ background: var(--accent-dark); border: 1px solid var(--border); border-radius: 10px; color: var(--accent); font-size: 1.2rem; font-weight: 850; left: 1.25rem; letter-spacing: 0.03em; padding: 0.45rem 0.7rem; position: fixed; top: 0.75rem; z-index: 100; }}
     [data-testid="stSidebar"] {{ background: var(--surface); border-right: 1px solid var(--border); }}
     [data-testid="stSidebar"] * {{ color: var(--text); }}
     h1 {{ letter-spacing: -0.03em; font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 0.25rem; }}
@@ -121,6 +122,8 @@ st.markdown(f"""
     .footer-note {{ color: var(--muted); font-size: 0.82rem; text-align: center; margin-top: 2.5rem; }}
 </style>
 """, unsafe_allow_html=True)
+
+st.markdown('<div class="brand-mark">FraudAlert</div>', unsafe_allow_html=True)
 
 with st.sidebar:
     st.markdown("### Preferences")
