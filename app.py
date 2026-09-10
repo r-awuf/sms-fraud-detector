@@ -59,7 +59,7 @@ def log_report(message, prediction):
         entry.to_csv(log_path, index=False)
 
 # ── UI ──────────────────────────────────────────────────────────────
-st.set_page_config(page_title="SMS Fraud Detector", page_icon="🛡️", layout="centered")
+st.set_page_config(page_title="FraudAlert", page_icon="🛡️", layout="centered")
 
 if 'dark_mode' not in st.session_state:
     st.session_state['dark_mode'] = False
@@ -95,6 +95,10 @@ st.markdown(f"""
     }}
     .stApp {{ background: var(--page); color: var(--text); }}
     [data-testid="stHeader"] {{ background: transparent; }}
+    .brand-lockup {{ align-items: center; color: var(--text); display: flex; font-size: 1.15rem; font-weight: 850; gap: 0.6rem; letter-spacing: 0.03em; margin: 0.75rem 0 1rem; }}
+    .header-brand {{ left: 1rem; margin: 0; position: fixed; top: 3.25rem; z-index: 100; }}
+    .brand-space {{ height: 2.5rem; }}
+    .brand-icon {{ align-items: center; background: var(--accent-dark); border: 1px solid var(--border); border-radius: 10px; display: flex; font-size: 1.15rem; height: 2.25rem; justify-content: center; width: 2.25rem; }}
     [data-testid="stSidebar"] {{ background: var(--surface); border-right: 1px solid var(--border); }}
     [data-testid="stSidebar"] * {{ color: var(--text); }}
     h1 {{ letter-spacing: -0.03em; font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 0.25rem; }}
@@ -130,15 +134,16 @@ with st.sidebar:
     st.markdown("**How it works**")
     st.caption("The model looks for patterns in the message and highlights common MoMo fraud signals.")
 
+st.markdown('<div class="brand-lockup header-brand"><span class="brand-icon">🛡️</span><span>FraudAlert</span></div><div class="brand-space"></div>', unsafe_allow_html=True)
+
 if 'show_welcome' not in st.session_state:
     st.session_state['show_welcome'] = True
 
 if st.session_state['show_welcome']:
     st.markdown('<div class="welcome-shell">', unsafe_allow_html=True)
-    st.markdown('<div class="welcome-mark">🛡️</div>', unsafe_allow_html=True)
     st.markdown('<div class="eyebrow">A safer second opinion</div>', unsafe_allow_html=True)
     st.markdown('<h1 class="welcome-title">Pause before you trust that message.</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="welcome-copy">SMS Fraud Detector helps you spot suspicious mobile money requests, prize claims, and urgent messages before they cost you money.</p>', unsafe_allow_html=True)
+    st.markdown('<p class="welcome-copy">FraudAlert helps you spot suspicious mobile money requests, prize claims, and urgent messages before they cost you money.</p>', unsafe_allow_html=True)
     if st.button("Start checking messages  →", type="primary", use_container_width=True):
         st.session_state['show_welcome'] = False
         st.rerun()
@@ -156,7 +161,7 @@ if st.session_state['show_welcome']:
     st.stop()
 
 st.markdown('<div class="eyebrow">Ghanaian SMS safety</div>', unsafe_allow_html=True)
-st.title("🛡️ SMS Fraud Detector")
+st.title("🛡️ FraudAlert")
 st.markdown('<p class="subtitle">A quick second opinion before you reply, click, or send money.</p>', unsafe_allow_html=True)
 
 example_fraud = "Congratulations! Your MTN MoMo account has won GHS 500. Send your PIN to 024XXXXXXX to claim your reward."

@@ -1,7 +1,7 @@
-# 🛡️ SMS Fraud & Spam Detector
+# 🛡️ FraudAlert
 
-A machine learning web app that detects mobile money scams and spam SMS,
-built with a focus on the Ghanaian MoMo context.
+FraudAlert is a machine learning web app that detects mobile money scams and
+spam SMS, built with a focus on the Ghanaian MoMo context.
 
 ## Problem
 
